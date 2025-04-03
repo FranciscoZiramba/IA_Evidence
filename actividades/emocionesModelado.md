@@ -1,0 +1,15 @@
+#Modelado del 03/04/2025
+#Modelar una red neuronal que pueda identificar emociones a través de los valores obtenidos de los landmarks que genera mediapipe.
+    ## -Definir el tipo de red neurona y describir cada una de sus partes
+        Al estar trabajando con mediapipe se podría utilizar una red neuronal artificial o una convolucional, si optamos por la convolucional sería trabajar más de lo necesario ya que no es tan indispensable en este caso detectar patrones como pueden ser bordes, texturas, etc. Por tal motivo una Red Neuronal Artificial nos ayudaría a procesar datos que podríamos mediante código (vectores planos) interpretar para determinar una emoción.
+        Los landmarks que usa mediapipe son al rededor de 465 que multiplicado por 3 que son las coordenadas X, Y, Z, da un total de 1,395 entradas que se irían procesando para obtender datos clave de los musculos faciales, es importante decir que dependiendo de lo preciso que necesitemos el modelo podemos optar por tomar solo 2 coordenadas o limitarlo a ciertos landmarks de partes importantes, podríamos usar por ejemplo landmarks clave (al rededor de 120 o menos ENTRADAS)
+    ## - Definir los patrones a utilizar.
+        Para patrones a utilizar podriamos usar vectores de caracteristicas importamtes al momento de expresar emociones en el rostro, podríamosconsiderar las cejas, boca, nariz, ojos e incluso mandibula, todos ellos en base a un punto de referencia para determinar cambios de distancia, calcular métricas clave y poder determinar una emoción.
+    ## - Definir el tipo de función de activación que es necesaria para este problema.
+        Considerando que se evalúan distintas emociones la función de activación de softmax podría ser útil, ya que por medio de probabilidades podría determinar a qué emoción pertenecen más o menos los datos obtenidos de los landmarks.
+    ## - Definir el número máximo de entradas.
+        Anteriormente definida, los landmarks totales son 468 multiplicado por 3 serían 1404 entradas máximas para el reconocimiento de emociones, dependiedo de qué es lo que necesitamos más se podría ajustar a lo requerido teniendo menos entradas o solo considerando por ejemplo X y Y.
+    ## - ¿Qué valores a la salida de la red se podrían esperar?
+        Ya que definimos la función de activación podríamos obtene un "vector" en base a las emociones que estamos trabajando, por ejemplo si detectamos 5 emociones básicas la salida podría estar represnetada como [a,b,c,d,e], donde cada valor varíe entre 0 y 1, donde cada valor indique a qué emoción está tendiendo el rostro, por ejemplo si un valor es de 0.85 y los demas son mas cercanos a 0 esto podría indicar que el rostro está más cerca de una emoción determinada.
+    ## - ¿Cuáles so los valores máximos que puede tener el bias? 
+        No tengo idea, creo que la vez pasada mencionó que eso no se puede saber porque es algo que sucede en el proceso interno del procesamiento.
